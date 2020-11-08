@@ -127,3 +127,4 @@ class ProfileHeader: UIView {
         profileImageView.sd_setImage(with: url)
     }
 }
+
