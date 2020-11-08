@@ -21,11 +21,9 @@
 		235CA47D254EDCE7001113DD /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA47C254EDCE7001113DD /* RegistrationViewModel.swift */; };
 		235CA482254EDD07001113DD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA481254EDD07001113DD /* LoginController.swift */; };
 		235CA487254EDD2B001113DD /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA486254EDD2B001113DD /* RegistrationController.swift */; };
-		235CA48C254EDD4E001113DD /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA48B254EDD4E001113DD /* MainTabController.swift */; };
 		235CA491254EDD6A001113DD /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA490254EDD6A001113DD /* NewMessageController.swift */; };
 		235CA496254EDD97001113DD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA495254EDD97001113DD /* ConversationController.swift */; };
-		235CA49B254EDDB7001113DD /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA49A254EDDB7001113DD /* NotificationController.swift */; };
-		235CA4A0254EDDD4001113DD /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA49F254EDDD4001113DD /* TimelineController.swift */; };
+		235CA4A0254EDDD4001113DD /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA49F254EDDD4001113DD /* SearchController.swift */; };
 		235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4A4254EDDF8001113DD /* AuthService.swift */; };
 		235CA4AA254EDE12001113DD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4A9254EDE12001113DD /* UserService.swift */; };
 		235CA4AF254EDE35001113DD /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4AE254EDE35001113DD /* Template.swift */; };
@@ -90,11 +88,9 @@
 		235CA47C254EDCE7001113DD /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		235CA481254EDD07001113DD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		235CA486254EDD2B001113DD /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
-		235CA48B254EDD4E001113DD /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		235CA490254EDD6A001113DD /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		235CA495254EDD97001113DD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
-		235CA49A254EDDB7001113DD /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		235CA49F254EDDD4001113DD /* TimelineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineController.swift; sourceTree = "<group>"; };
+		235CA49F254EDDD4001113DD /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		235CA4A4254EDDF8001113DD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		235CA4A9254EDE12001113DD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		235CA4AE254EDE35001113DD /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
@@ -312,10 +308,8 @@
 		235CA529255432B4001113DD /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				235CA48B254EDD4E001113DD /* MainTabController.swift */,
 				235CA495254EDD97001113DD /* ConversationController.swift */,
-				235CA49A254EDDB7001113DD /* NotificationController.swift */,
-				235CA49F254EDDD4001113DD /* TimelineController.swift */,
+				235CA49F254EDDD4001113DD /* SearchController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -573,7 +567,7 @@
 				235CA47D254EDCE7001113DD /* RegistrationViewModel.swift in Sources */,
 				235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */,
 				235CA4C9254F12AB001113DD /* ChatController.swift in Sources */,
-				235CA4A0254EDDD4001113DD /* TimelineController.swift in Sources */,
+				235CA4A0254EDDD4001113DD /* SearchController.swift in Sources */,
 				235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */,
 				235CA4B9254EDE69001113DD /* TemplateButton.swift in Sources */,
 				235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */,
@@ -588,9 +582,7 @@
 				235CA4E3254F444A001113DD /* Message.swift in Sources */,
 				235CA4F92552F505001113DD /* ConversationViewModel.swift in Sources */,
 				235CA4B4254EDE46001113DD /* CustomTextField.swift in Sources */,
-				235CA49B254EDDB7001113DD /* NotificationController.swift in Sources */,
 				235CA496254EDD97001113DD /* ConversationController.swift in Sources */,
-				235CA48C254EDD4E001113DD /* MainTabController.swift in Sources */,
 				235CA46E254EDC87001113DD /* User.swift in Sources */,
 				235CA4AA254EDE12001113DD /* UserService.swift in Sources */,
 				235CA487254EDD2B001113DD /* RegistrationController.swift in Sources */,

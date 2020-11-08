@@ -19,8 +19,20 @@ class EditProfileController: UITableViewController {
     }
     
     private lazy var headerView = EditProfileHeader(frame: .init(x: 0, y: 0,
-                                                             width: view.frame.width, height: 550))
+                                                             width: view.frame.width, height: 300))
     
+    private let saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .white
+        button.setTitle("保存", for: .normal)
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        button.setTitleColor(.systemPink, for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 64, height: 32)
+        button.layer.cornerRadius = 32 / 2
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        return button
+    }()
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -36,6 +48,10 @@ class EditProfileController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func handleSave() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: API
     
     func fatchUser() {
@@ -48,22 +64,21 @@ class EditProfileController: UITableViewController {
     //MARK: Helpers
     
     func configureUI() {
-        configureNavigationBar(withTitle: "プロフィール")
+        configureNavigationBar(withTitle: "プロフィール編集")
         view.backgroundColor = .white
         
         tableView.tableHeaderView = headerView
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
+        
+        headerView.delegate = self
     }
     
     func configureBarButton() {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        button.tintColor = .white
-        button.imageView?.setDimensions(width: 25, height: 25)
-        button.addTarget(self, action: #selector(handleDissmissal), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(handleDissmissal))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
 
@@ -76,4 +91,12 @@ extension EditProfileController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         return cell
     }
+}
+
+extension EditProfileController: EditProfileHeaderDelegate {
+    func didTapChangeProfilePhoto() {
+        print(1111111111)
+    }
+    
+    
 }

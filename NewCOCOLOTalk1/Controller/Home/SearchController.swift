@@ -1,5 +1,5 @@
 //
-//  TimelineController.swift
+//  SearchController.swift
 //  NewCOCOLOTalk1
 //
 //  Created by 志村　啓太 on 2020/11/01.
@@ -10,7 +10,7 @@ import Firebase
 
 private let reuserIdentifier = "UserCell"
 
-class TimelineController: UITableViewController {
+class SearchController: UITableViewController {
     
     //MARK: Properties
     
@@ -29,6 +29,12 @@ class TimelineController: UITableViewController {
         configureUI()
         confitureSearchController()
         fatchUsers()
+    }
+    
+    //MARK: Selectors
+    
+    @objc func handleDissmissal() {
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: API
@@ -51,6 +57,14 @@ class TimelineController: UITableViewController {
         tableView.register(UserCell.self, forCellReuseIdentifier: reuserIdentifier)
         tableView.rowHeight = 200
         tableView.keyboardDismissMode = .interactive
+        
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        button.tintColor = .white
+        button.imageView?.setDimensions(width: 25, height: 25)
+        button.addTarget(self, action: #selector(handleDissmissal), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     func confitureSearchController() {
@@ -70,7 +84,7 @@ class TimelineController: UITableViewController {
 
 //MARK: UITableViewDataSource
 
-extension TimelineController {
+extension SearchController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return inSearchMode ? filteredUsers.count : users.count
     }
@@ -86,7 +100,7 @@ extension TimelineController {
 
 //MARK: UISearchResultsUpdating
 
-extension TimelineController: UISearchResultsUpdating {
+extension SearchController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else { return }
         

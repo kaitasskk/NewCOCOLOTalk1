@@ -75,9 +75,9 @@ class LoginController: UIViewController {
             }
             
             guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-            guard let tab = window.rootViewController as? MainTabController else { return }
+            guard let conversation = window.rootViewController as? ConversationController else { return }
             
-            tab.authenticationUser()
+            conversation.authenticationUser()
             
             self.showLoader(false)
             self.dismiss(animated: true, completion: nil)
@@ -86,8 +86,8 @@ class LoginController: UIViewController {
     
     @objc func handleTestLogin() {
         guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        guard let tab = window.rootViewController as? MainTabController else { return }
-        tab.authenticationUser()
+        guard let conversation = window.rootViewController as? ConversationController else { return }
+        conversation.authenticationUser()
         dismiss(animated: true, completion: nil)
     }
     
