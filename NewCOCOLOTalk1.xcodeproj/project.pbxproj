@@ -3,18 +3,51 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA402254ED5CC001113DD /* AppDelegate.swift */; };
 		235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA404254ED5CC001113DD /* SceneDelegate.swift */; };
-		235CA407254ED5CC001113DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA406254ED5CC001113DD /* ViewController.swift */; };
 		235CA40A254ED5CC001113DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235CA408254ED5CC001113DD /* Main.storyboard */; };
 		235CA40C254ED5CF001113DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235CA40B254ED5CF001113DD /* Assets.xcassets */; };
 		235CA40F254ED5CF001113DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235CA40D254ED5CF001113DD /* LaunchScreen.storyboard */; };
 		235CA41A254ED5D0001113DD /* NewCOCOLOTalk1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA419254ED5D0001113DD /* NewCOCOLOTalk1Tests.swift */; };
 		235CA425254ED5D0001113DD /* NewCOCOLOTalk1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA424254ED5D0001113DD /* NewCOCOLOTalk1UITests.swift */; };
+		235CA436254ED624001113DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 235CA435254ED624001113DD /* GoogleService-Info.plist */; };
+		235CA46E254EDC87001113DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA46D254EDC87001113DD /* User.swift */; };
+		235CA473254EDCA0001113DD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA472254EDCA0001113DD /* UserCell.swift */; };
+		235CA478254EDCC8001113DD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA477254EDCC8001113DD /* LoginViewModel.swift */; };
+		235CA47D254EDCE7001113DD /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA47C254EDCE7001113DD /* RegistrationViewModel.swift */; };
+		235CA482254EDD07001113DD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA481254EDD07001113DD /* LoginController.swift */; };
+		235CA487254EDD2B001113DD /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA486254EDD2B001113DD /* RegistrationController.swift */; };
+		235CA48C254EDD4E001113DD /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA48B254EDD4E001113DD /* MainTabController.swift */; };
+		235CA491254EDD6A001113DD /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA490254EDD6A001113DD /* NewMessageController.swift */; };
+		235CA496254EDD97001113DD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA495254EDD97001113DD /* ConversationController.swift */; };
+		235CA49B254EDDB7001113DD /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA49A254EDDB7001113DD /* NotificationController.swift */; };
+		235CA4A0254EDDD4001113DD /* TimelineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA49F254EDDD4001113DD /* TimelineController.swift */; };
+		235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4A4254EDDF8001113DD /* AuthService.swift */; };
+		235CA4AA254EDE12001113DD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4A9254EDE12001113DD /* UserService.swift */; };
+		235CA4AF254EDE35001113DD /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4AE254EDE35001113DD /* Template.swift */; };
+		235CA4B4254EDE46001113DD /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4B3254EDE46001113DD /* CustomTextField.swift */; };
+		235CA4B9254EDE69001113DD /* TemplateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4B8254EDE69001113DD /* TemplateButton.swift */; };
+		235CA4C9254F12AB001113DD /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4C8254F12AB001113DD /* ChatController.swift */; };
+		235CA4CE254F13BC001113DD /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4CD254F13BC001113DD /* ConversationCell.swift */; };
+		235CA4D3254F1A97001113DD /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4D2254F1A97001113DD /* CustomInputAccessoryView.swift */; };
+		235CA4DE254F3FA8001113DD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4DD254F3FA8001113DD /* ChatCell.swift */; };
+		235CA4E3254F444A001113DD /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4E2254F444A001113DD /* Message.swift */; };
+		235CA4EB254F47A6001113DD /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4EA254F47A6001113DD /* MessageViewModel.swift */; };
+		235CA4F0254F5495001113DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4EF254F5495001113DD /* Constants.swift */; };
+		235CA4F92552F505001113DD /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4F82552F505001113DD /* ConversationViewModel.swift */; };
+		235CA51B25542B28001113DD /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA51A25542B28001113DD /* Notification.swift */; };
+		235CA52025542D3F001113DD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA51F25542D3F001113DD /* NotificationService.swift */; };
+		235CA52525543176001113DD /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA52425543176001113DD /* NotificationCell.swift */; };
+		235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA53A2557B0DB001113DD /* EditProfileController.swift */; };
+		235CA5432557C5FA001113DD /* EditProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA5422557C5F9001113DD /* EditProfileHeader.swift */; };
+		235CA5512557FF7C001113DD /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA5502557FF7C001113DD /* ProfileHeader.swift */; };
+		28D84E1CD77740633BEB243D /* Pods_NewCOCOLOTalk1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */; };
+		73AEBDFA44EB93F62CDD5EC9 /* Pods_NewCOCOLOTalk1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */; };
+		BC5C7775628B3CA6A4E495AB /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6121F4AE89C46F05C33B5 /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +68,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0491306C56174C0A5EA762F5 /* Pods-NewCOCOLOTalk1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1.debug.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1.debug.xcconfig"; sourceTree = "<group>"; };
 		235CA3FF254ED5CC001113DD /* NewCOCOLOTalk1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewCOCOLOTalk1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235CA402254ED5CC001113DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235CA404254ED5CC001113DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		235CA406254ED5CC001113DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		235CA409254ED5CC001113DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		235CA40B254ED5CF001113DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		235CA40E254ED5CF001113DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +83,44 @@
 		235CA420254ED5D0001113DD /* NewCOCOLOTalk1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewCOCOLOTalk1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		235CA424254ED5D0001113DD /* NewCOCOLOTalk1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCOCOLOTalk1UITests.swift; sourceTree = "<group>"; };
 		235CA426254ED5D0001113DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		235CA435254ED624001113DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		235CA46D254EDC87001113DD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		235CA472254EDCA0001113DD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		235CA477254EDCC8001113DD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = ../LoginViewModel.swift; sourceTree = "<group>"; };
+		235CA47C254EDCE7001113DD /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		235CA481254EDD07001113DD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		235CA486254EDD2B001113DD /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		235CA48B254EDD4E001113DD /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		235CA490254EDD6A001113DD /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		235CA495254EDD97001113DD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
+		235CA49A254EDDB7001113DD /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		235CA49F254EDDD4001113DD /* TimelineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineController.swift; sourceTree = "<group>"; };
+		235CA4A4254EDDF8001113DD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		235CA4A9254EDE12001113DD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		235CA4AE254EDE35001113DD /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		235CA4B3254EDE46001113DD /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		235CA4B8254EDE69001113DD /* TemplateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateButton.swift; sourceTree = "<group>"; };
+		235CA4C8254F12AB001113DD /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		235CA4CD254F13BC001113DD /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		235CA4D2254F1A97001113DD /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
+		235CA4DD254F3FA8001113DD /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		235CA4E2254F444A001113DD /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		235CA4EA254F47A6001113DD /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		235CA4EF254F5495001113DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		235CA4F82552F505001113DD /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		235CA51A25542B28001113DD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		235CA51F25542D3F001113DD /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		235CA52425543176001113DD /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		235CA53A2557B0DB001113DD /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		235CA5422557C5F9001113DD /* EditProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileHeader.swift; sourceTree = "<group>"; };
+		235CA5502557FF7C001113DD /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1Tests.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1Tests/Pods-NewCOCOLOTalk1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1135E39C61172D948BFB2F /* Pods-NewCOCOLOTalk1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1.release.xcconfig"; sourceTree = "<group>"; };
+		CEAB50CB5EABADDE54205FA0 /* Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.debug.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F9D43FC723AE27F7FD0D6CE5 /* Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.release.xcconfig"; sourceTree = "<group>"; };
+		FCE6121F4AE89C46F05C33B5 /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF14D62C5DF7D081B41AAE92 /* Pods-NewCOCOLOTalk1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1Tests.debug.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1Tests/Pods-NewCOCOLOTalk1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28D84E1CD77740633BEB243D /* Pods_NewCOCOLOTalk1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AEBDFA44EB93F62CDD5EC9 /* Pods_NewCOCOLOTalk1Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +144,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5C7775628B3CA6A4E495AB /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E745DE56BD940D759455D7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0491306C56174C0A5EA762F5 /* Pods-NewCOCOLOTalk1.debug.xcconfig */,
+				BA1135E39C61172D948BFB2F /* Pods-NewCOCOLOTalk1.release.xcconfig */,
+				CEAB50CB5EABADDE54205FA0 /* Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.debug.xcconfig */,
+				F9D43FC723AE27F7FD0D6CE5 /* Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.release.xcconfig */,
+				FF14D62C5DF7D081B41AAE92 /* Pods-NewCOCOLOTalk1Tests.debug.xcconfig */,
+				3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		235CA3F6254ED5CC001113DD = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +171,8 @@
 				235CA418254ED5D0001113DD /* NewCOCOLOTalk1Tests */,
 				235CA423254ED5D0001113DD /* NewCOCOLOTalk1UITests */,
 				235CA400254ED5CC001113DD /* Products */,
+				0E745DE56BD940D759455D7A /* Pods */,
+				9797BE630A01EBCF85D751BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +189,19 @@
 		235CA401254ED5CC001113DD /* NewCOCOLOTalk1 */ = {
 			isa = PBXGroup;
 			children = (
+				235CA465254EDC32001113DD /* Model */,
+				235CA464254EDC2F001113DD /* View */,
+				235CA463254EDC2C001113DD /* ViewModel */,
+				235CA462254EDC29001113DD /* Controller */,
+				235CA461254EDC27001113DD /* API */,
+				235CA45D254EDC22001113DD /* Utils */,
 				235CA402254ED5CC001113DD /* AppDelegate.swift */,
 				235CA404254ED5CC001113DD /* SceneDelegate.swift */,
-				235CA406254ED5CC001113DD /* ViewController.swift */,
 				235CA408254ED5CC001113DD /* Main.storyboard */,
 				235CA40B254ED5CF001113DD /* Assets.xcassets */,
 				235CA40D254ED5CF001113DD /* LaunchScreen.storyboard */,
 				235CA410254ED5CF001113DD /* Info.plist */,
+				235CA435254ED624001113DD /* GoogleService-Info.plist */,
 			);
 			path = NewCOCOLOTalk1;
 			sourceTree = "<group>";
@@ -128,6 +224,112 @@
 			path = NewCOCOLOTalk1UITests;
 			sourceTree = "<group>";
 		};
+		235CA45D254EDC22001113DD /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				235CA4AE254EDE35001113DD /* Template.swift */,
+				235CA4B3254EDE46001113DD /* CustomTextField.swift */,
+				235CA4B8254EDE69001113DD /* TemplateButton.swift */,
+				235CA4EF254F5495001113DD /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		235CA461254EDC27001113DD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				235CA4A4254EDDF8001113DD /* AuthService.swift */,
+				235CA4A9254EDE12001113DD /* UserService.swift */,
+				235CA51F25542D3F001113DD /* NotificationService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		235CA462254EDC29001113DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				235CA469254EDC6A001113DD /* Authentication */,
+				235CA529255432B4001113DD /* Home */,
+				235CA490254EDD6A001113DD /* NewMessageController.swift */,
+				235CA4C8254F12AB001113DD /* ChatController.swift */,
+				235CA53A2557B0DB001113DD /* EditProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		235CA463254EDC2C001113DD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				235CA4F425502F7F001113DD /* Authentication */,
+				235CA4EA254F47A6001113DD /* MessageViewModel.swift */,
+				235CA4F82552F505001113DD /* ConversationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		235CA464254EDC2F001113DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				235CA472254EDCA0001113DD /* UserCell.swift */,
+				235CA4CD254F13BC001113DD /* ConversationCell.swift */,
+				235CA4D2254F1A97001113DD /* CustomInputAccessoryView.swift */,
+				235CA4DD254F3FA8001113DD /* ChatCell.swift */,
+				235CA52425543176001113DD /* NotificationCell.swift */,
+				235CA5502557FF7C001113DD /* ProfileHeader.swift */,
+				235CA5422557C5F9001113DD /* EditProfileHeader.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		235CA465254EDC32001113DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				235CA46D254EDC87001113DD /* User.swift */,
+				235CA4E2254F444A001113DD /* Message.swift */,
+				235CA51A25542B28001113DD /* Notification.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		235CA469254EDC6A001113DD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				235CA481254EDD07001113DD /* LoginController.swift */,
+				235CA486254EDD2B001113DD /* RegistrationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		235CA4F425502F7F001113DD /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				235CA477254EDCC8001113DD /* LoginViewModel.swift */,
+				235CA47C254EDCE7001113DD /* RegistrationViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		235CA529255432B4001113DD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				235CA48B254EDD4E001113DD /* MainTabController.swift */,
+				235CA495254EDD97001113DD /* ConversationController.swift */,
+				235CA49A254EDDB7001113DD /* NotificationController.swift */,
+				235CA49F254EDDD4001113DD /* TimelineController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		9797BE630A01EBCF85D751BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */,
+				FCE6121F4AE89C46F05C33B5 /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework */,
+				53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +337,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 235CA429254ED5D0001113DD /* Build configuration list for PBXNativeTarget "NewCOCOLOTalk1" */;
 			buildPhases = (
+				96A59C0EF7B9194F38F741F8 /* [CP] Check Pods Manifest.lock */,
 				235CA3FB254ED5CC001113DD /* Sources */,
 				235CA3FC254ED5CC001113DD /* Frameworks */,
 				235CA3FD254ED5CC001113DD /* Resources */,
+				A3C58013756BC126F9CE444F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +356,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 235CA42C254ED5D0001113DD /* Build configuration list for PBXNativeTarget "NewCOCOLOTalk1Tests" */;
 			buildPhases = (
+				87344D6CC620AF825172A0DD /* [CP] Check Pods Manifest.lock */,
 				235CA411254ED5D0001113DD /* Sources */,
 				235CA412254ED5D0001113DD /* Frameworks */,
 				235CA413254ED5D0001113DD /* Resources */,
@@ -170,9 +375,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 235CA42F254ED5D0001113DD /* Build configuration list for PBXNativeTarget "NewCOCOLOTalk1UITests" */;
 			buildPhases = (
+				23778684DF48EF349652942E /* [CP] Check Pods Manifest.lock */,
 				235CA41C254ED5D0001113DD /* Sources */,
 				235CA41D254ED5D0001113DD /* Frameworks */,
 				235CA41E254ED5D0001113DD /* Resources */,
+				DC6F23E2D010255ED19EE41A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				235CA40F254ED5CF001113DD /* LaunchScreen.storyboard in Resources */,
+				235CA436254ED624001113DD /* GoogleService-Info.plist in Resources */,
 				235CA40C254ED5CF001113DD /* Assets.xcassets in Resources */,
 				235CA40A254ED5CC001113DD /* Main.storyboard in Resources */,
 			);
@@ -253,14 +461,146 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23778684DF48EF349652942E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87344D6CC620AF825172A0DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NewCOCOLOTalk1Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96A59C0EF7B9194F38F741F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NewCOCOLOTalk1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3C58013756BC126F9CE444F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC6F23E2D010255ED19EE41A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests/Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		235CA3FB254ED5CC001113DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				235CA407254ED5CC001113DD /* ViewController.swift in Sources */,
+				235CA473254EDCA0001113DD /* UserCell.swift in Sources */,
+				235CA47D254EDCE7001113DD /* RegistrationViewModel.swift in Sources */,
 				235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */,
+				235CA4C9254F12AB001113DD /* ChatController.swift in Sources */,
+				235CA4A0254EDDD4001113DD /* TimelineController.swift in Sources */,
 				235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */,
+				235CA4B9254EDE69001113DD /* TemplateButton.swift in Sources */,
+				235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */,
+				235CA5512557FF7C001113DD /* ProfileHeader.swift in Sources */,
+				235CA4F0254F5495001113DD /* Constants.swift in Sources */,
+				235CA4AF254EDE35001113DD /* Template.swift in Sources */,
+				235CA491254EDD6A001113DD /* NewMessageController.swift in Sources */,
+				235CA4DE254F3FA8001113DD /* ChatCell.swift in Sources */,
+				235CA4D3254F1A97001113DD /* CustomInputAccessoryView.swift in Sources */,
+				235CA478254EDCC8001113DD /* LoginViewModel.swift in Sources */,
+				235CA4EB254F47A6001113DD /* MessageViewModel.swift in Sources */,
+				235CA4E3254F444A001113DD /* Message.swift in Sources */,
+				235CA4F92552F505001113DD /* ConversationViewModel.swift in Sources */,
+				235CA4B4254EDE46001113DD /* CustomTextField.swift in Sources */,
+				235CA49B254EDDB7001113DD /* NotificationController.swift in Sources */,
+				235CA496254EDD97001113DD /* ConversationController.swift in Sources */,
+				235CA48C254EDD4E001113DD /* MainTabController.swift in Sources */,
+				235CA46E254EDC87001113DD /* User.swift in Sources */,
+				235CA4AA254EDE12001113DD /* UserService.swift in Sources */,
+				235CA487254EDD2B001113DD /* RegistrationController.swift in Sources */,
+				235CA51B25542B28001113DD /* Notification.swift in Sources */,
+				235CA52025542D3F001113DD /* NotificationService.swift in Sources */,
+				235CA482254EDD07001113DD /* LoginController.swift in Sources */,
+				235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */,
+				235CA52525543176001113DD /* NotificationCell.swift in Sources */,
+				235CA4CE254F13BC001113DD /* ConversationCell.swift in Sources */,
+				235CA5432557C5FA001113DD /* EditProfileHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +773,7 @@
 		};
 		235CA42A254ED5D0001113DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0491306C56174C0A5EA762F5 /* Pods-NewCOCOLOTalk1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +793,7 @@
 		};
 		235CA42B254ED5D0001113DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA1135E39C61172D948BFB2F /* Pods-NewCOCOLOTalk1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +813,7 @@
 		};
 		235CA42D254ED5D0001113DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF14D62C5DF7D081B41AAE92 /* Pods-NewCOCOLOTalk1Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +836,7 @@
 		};
 		235CA42E254ED5D0001113DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +859,7 @@
 		};
 		235CA430254ED5D0001113DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEAB50CB5EABADDE54205FA0 /* Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +880,7 @@
 		};
 		235CA431254ED5D0001113DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9D43FC723AE27F7FD0D6CE5 /* Pods-NewCOCOLOTalk1-NewCOCOLOTalk1UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
