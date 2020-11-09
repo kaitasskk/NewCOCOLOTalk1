@@ -91,7 +91,7 @@ class ConversationCell: UITableViewCell {
         let viewModel = ConversationViewModel(conversation: conversation)
         
         fullnameLabel.text = conversation.user.fullname
-        usernameLabel.text = conversation.user.username
+        usernameLabel.text = "@" + conversation.user.username
         messageTextLabel.text = conversation.message.text
         
         timestampLabel.text = viewModel.timestamp

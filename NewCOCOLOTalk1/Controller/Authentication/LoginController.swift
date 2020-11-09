@@ -8,11 +8,17 @@
 import UIKit
 import Firebase
 
+protocol AuthenticationDelegate: class {
+    func authenticationComplete()
+}
+
 class LoginController: UIViewController {
     
     //MARK: Properties
     
     private var viewModel = LoginViewModel()
+    
+    weak var delegete: AuthenticationDelegate?
     
     private let iconImageView: UIImageView = {
         let iv = UIImageView()
@@ -74,25 +80,18 @@ class LoginController: UIViewController {
                 return
             }
             
-            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-            guard let conversation = window.rootViewController as? ConversationController else { return }
-            
-            conversation.authenticationUser()
-            
             self.showLoader(false)
-            self.dismiss(animated: true, completion: nil)
+            self.delegete?.authenticationComplete()
         }
     }
     
     @objc func handleTestLogin() {
-        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        guard let conversation = window.rootViewController as? ConversationController else { return }
-        conversation.authenticationUser()
         dismiss(animated: true, completion: nil)
     }
     
     @objc func handleShowRegistration() {
         let controller = RegistrationController()
+        controller.delegate = delegete
         navigationController?.pushViewController(controller, animated: true)
     }
     

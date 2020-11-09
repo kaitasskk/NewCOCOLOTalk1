@@ -14,6 +14,7 @@ class RegistrationController: UIViewController {
     
     private var viewModel = RegistrationViewModel()
     private var profileImage: UIImage?
+    weak var delegate: AuthenticationDelegate?
     
     private let selectPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -94,19 +95,13 @@ class RegistrationController: UIViewController {
                 self.showError(error.localizedDescription)
                 return
             }
-            guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-            guard let conversation = window.rootViewController as? ConversationController else { return }
             
-            conversation.authenticationUser()
             self.showLoader(false)
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
         }
     }
     
     @objc func handleTestLogin() {
-        guard let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) else { return }
-        guard let conversation = window.rootViewController as? ConversationController else { return }
-        conversation.authenticationUser()
         dismiss(animated: true, completion: nil)
     }
     

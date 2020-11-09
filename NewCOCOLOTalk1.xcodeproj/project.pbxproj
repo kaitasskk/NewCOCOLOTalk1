@@ -41,7 +41,6 @@
 		235CA52025542D3F001113DD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA51F25542D3F001113DD /* NotificationService.swift */; };
 		235CA52525543176001113DD /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA52425543176001113DD /* NotificationCell.swift */; };
 		235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA53A2557B0DB001113DD /* EditProfileController.swift */; };
-		235CA5432557C5FA001113DD /* EditProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA5422557C5F9001113DD /* EditProfileHeader.swift */; };
 		235CA5512557FF7C001113DD /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA5502557FF7C001113DD /* ProfileHeader.swift */; };
 		28D84E1CD77740633BEB243D /* Pods_NewCOCOLOTalk1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */; };
 		73AEBDFA44EB93F62CDD5EC9 /* Pods_NewCOCOLOTalk1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */; };
@@ -108,7 +107,6 @@
 		235CA51F25542D3F001113DD /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		235CA52425543176001113DD /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		235CA53A2557B0DB001113DD /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
-		235CA5422557C5F9001113DD /* EditProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileHeader.swift; sourceTree = "<group>"; };
 		235CA5502557FF7C001113DD /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1Tests.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1Tests/Pods-NewCOCOLOTalk1Tests.release.xcconfig"; sourceTree = "<group>"; };
 		53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,8 +243,9 @@
 			isa = PBXGroup;
 			children = (
 				235CA469254EDC6A001113DD /* Authentication */,
-				235CA529255432B4001113DD /* Home */,
+				235CA495254EDD97001113DD /* ConversationController.swift */,
 				235CA490254EDD6A001113DD /* NewMessageController.swift */,
+				235CA49F254EDDD4001113DD /* SearchController.swift */,
 				235CA4C8254F12AB001113DD /* ChatController.swift */,
 				235CA53A2557B0DB001113DD /* EditProfileController.swift */,
 			);
@@ -266,13 +265,12 @@
 		235CA464254EDC2F001113DD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				235CA56125584347001113DD /* Profile */,
 				235CA472254EDCA0001113DD /* UserCell.swift */,
 				235CA4CD254F13BC001113DD /* ConversationCell.swift */,
 				235CA4D2254F1A97001113DD /* CustomInputAccessoryView.swift */,
 				235CA4DD254F3FA8001113DD /* ChatCell.swift */,
 				235CA52425543176001113DD /* NotificationCell.swift */,
-				235CA5502557FF7C001113DD /* ProfileHeader.swift */,
-				235CA5422557C5F9001113DD /* EditProfileHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,13 +303,12 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		235CA529255432B4001113DD /* Home */ = {
+		235CA56125584347001113DD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				235CA495254EDD97001113DD /* ConversationController.swift */,
-				235CA49F254EDDD4001113DD /* SearchController.swift */,
+				235CA5502557FF7C001113DD /* ProfileHeader.swift */,
 			);
-			path = Home;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		9797BE630A01EBCF85D751BC /* Frameworks */ = {
@@ -592,7 +589,6 @@
 				235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */,
 				235CA52525543176001113DD /* NotificationCell.swift in Sources */,
 				235CA4CE254F13BC001113DD /* ConversationCell.swift in Sources */,
-				235CA5432557C5FA001113DD /* EditProfileHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

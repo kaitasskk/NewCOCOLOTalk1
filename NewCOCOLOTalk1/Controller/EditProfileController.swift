@@ -7,19 +7,23 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
-private let reuseIdentifier = "ProfileCell"
+private let reuseIdentifier = "EditProfileCell"
 
-class EditProfileController: UITableViewController {
+protocol EditProfileControllerDelegate: class{
+    func handleLogout()
+}
+
+class EditProfileController: UIViewController {
     
     //MARK: Properties
     
-    private var user: User? {
-        didSet { headerView.user = user }
+    var user: User? {
+        didSet { configure() }
     }
     
-    private lazy var headerView = EditProfileHeader(frame: .init(x: 0, y: 0,
-                                                             width: view.frame.width, height: 300))
+    weak var delegate: EditProfileControllerDelegate?
     
     private let saveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -33,6 +37,37 @@ class EditProfileController: UITableViewController {
         button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var profileImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.backgroundColor = .lightGray
+        iv.contentMode = .scaleAspectFill
+        iv.layer.borderColor = UIColor.white.cgColor
+        iv.layer.borderWidth = 4
+        iv.clipsToBounds = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageChange))
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
+        
+        return iv
+    }()
+    
+    private let fullnameTextField: UITextField = CustomTextField(placeholder: "名前")
+    private let usernameTextField: UITextField = CustomTextField(placeholder: "ユーザーネーム")
+    private let ageTextField: UITextField = CustomTextField(placeholder: "生年月日（1996/10/8）")
+    private let genderTextField: UITextField = CustomTextField(placeholder: "性別(男性)")
+    private let sickTextField: UITextField = CustomTextField(placeholder: "病名(社交不安障害)")
+    private let bioTextField: UITextField = CustomTextField(placeholder: "プロフィール文")
+    
+    private let logoutButton: TemplateButton = {
+        let button = TemplateButton(title: "ログアウト", type: .system)
+        button.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
+        button.backgroundColor = .lightGray
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -52,6 +87,24 @@ class EditProfileController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc func handleProfileImageChange() {
+        print(123)
+    }
+    
+    @objc func handleLogout() {
+        let aleat = UIAlertController(title: nil, message: "ログアウトしてよろしいですか？", preferredStyle: .actionSheet)
+        
+        aleat.addAction((UIAlertAction(title: "ログアウト", style: .destructive, handler: { _ in
+            self.dismiss(animated: true) {
+                self.delegate?.handleLogout()
+            }
+        })))
+        
+        aleat.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        
+        present(aleat, animated: true, completion: nil)
+    }
+    
     //MARK: API
     
     func fatchUser() {
@@ -65,13 +118,24 @@ class EditProfileController: UITableViewController {
     
     func configureUI() {
         configureNavigationBar(withTitle: "プロフィール編集")
-        view.backgroundColor = .white
         
-        tableView.tableHeaderView = headerView
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.tableFooterView = UIView()
+        view.backgroundColor = .systemPink
         
-        headerView.delegate = self
+        view.addSubview(profileImageView)
+        profileImageView.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
+        profileImageView.setDimensions(width: 150, height: 150)
+        profileImageView.layer.cornerRadius = 150 / 2
+        
+        let stack = UIStackView(arrangedSubviews: [fullnameTextField, usernameTextField,
+                                                   ageTextField, genderTextField, sickTextField,
+                                                   bioTextField, logoutButton])
+        stack.axis = .vertical
+        stack.spacing = 16
+        
+        view.addSubview(stack)
+        stack.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor,
+                     right: view.rightAnchor,
+                     paddingTop: 50, paddingLeft: 30, paddingRight: 30)
     }
     
     func configureBarButton() {
@@ -80,23 +144,19 @@ class EditProfileController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
+    
+    func configure() {
+        guard let user = user else { return }
+        
+        fullnameTextField.text = user.fullname
+        usernameTextField.text = user.username
+        genderTextField.text = user.gender
+        ageTextField.text = user.age
+        sickTextField.text = user.sick
+        bioTextField.text = user.bio
+        
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        profileImageView.sd_setImage(with: url)
+    }
 }
 
-extension EditProfileController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        return cell
-    }
-}
-
-extension EditProfileController: EditProfileHeaderDelegate {
-    func didTapChangeProfilePhoto() {
-        print(1111111111)
-    }
-    
-    
-}

@@ -41,7 +41,6 @@ class ProfileHeader: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .darkGray
-        label.text = "男性"
         return label
     }()
     
@@ -49,7 +48,6 @@ class ProfileHeader: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .darkGray
-        label.text = "24歳"
         return label
     }()
     
@@ -57,7 +55,6 @@ class ProfileHeader: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .darkGray
-        label.text = "社交不安障害"
         return label
     }()
     
@@ -66,7 +63,6 @@ class ProfileHeader: UIView {
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .darkGray
         label.numberOfLines = 5
-        label.text = "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
         return label
     }()
 

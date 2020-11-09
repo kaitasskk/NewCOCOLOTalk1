@@ -111,7 +111,7 @@ class UserCell: UITableViewCell {
     func configure() {
         guard let user = user else { return }
         fullnameLabel.text = user.fullname
-        usernameLabel.text = user.username
+        usernameLabel.text = "@" + user.username
         genderLabel.text = user.gender
         ageLabel.text = user.age
         sickLabel.text = user.sick
