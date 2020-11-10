@@ -16,7 +16,7 @@ struct ConversationViewModel {
     }
     
     var timestamp: String {
-        let date = conversation.message.timeStamp.dateValue()
+        let date = conversation.message.timestamp.dateValue()
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short

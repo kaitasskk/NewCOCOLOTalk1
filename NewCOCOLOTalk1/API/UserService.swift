@@ -81,4 +81,15 @@ struct UserService {
             COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data)
         }
     }
+    
+    static func saveUserData(user: User, completion: ((Error?) -> Void)?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let data = ["fullname": user.fullname,
+                    "username": user.username,
+                    "sick": user.sick,
+                    "bio": user.bio]
+        
+        COLLECTION_USERS.document(uid).updateData(data, completion: completion)
+    }
 }

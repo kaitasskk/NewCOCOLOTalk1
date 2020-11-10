@@ -15,17 +15,27 @@ protocol EditProfileControllerDelegate: class{
     func handleLogout()
 }
 
+protocol EditProfileControllerUpdateDelegate: class {
+    func controller(_ controller: EditProfileController, wantsToUpdate user: User)
+}
+
 class EditProfileController: UIViewController {
     
     //MARK: Properties
     
-    var user: User? {
+    private var user: User {
         didSet { configure() }
     }
     
-    weak var delegate: EditProfileControllerDelegate?
+    private var viewModel = RegistrationViewModel()
+    private var selectedImage: UIImage? {
+        didSet { profileImageView.image = selectedImage }
+    }
     
-    private let saveButton: UIButton = {
+    weak var delegate: EditProfileControllerDelegate?
+    weak var updateDelegate: EditProfileControllerUpdateDelegate?
+    
+    private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
         button.setTitle("保存", for: .normal)
@@ -55,10 +65,8 @@ class EditProfileController: UIViewController {
     
     private let fullnameTextField: UITextField = CustomTextField(placeholder: "名前")
     private let usernameTextField: UITextField = CustomTextField(placeholder: "ユーザーネーム")
-    private let ageTextField: UITextField = CustomTextField(placeholder: "生年月日（1996/10/8）")
-    private let genderTextField: UITextField = CustomTextField(placeholder: "性別(男性)")
     private let sickTextField: UITextField = CustomTextField(placeholder: "病名(社交不安障害)")
-    private let bioTextField: UITextField = CustomTextField(placeholder: "プロフィール文")
+    private let bioTextView: UITextView = LargeCustomTextView()
     
     private let logoutButton: TemplateButton = {
         let button = TemplateButton(title: "ログアウト", type: .system)
@@ -70,11 +78,21 @@ class EditProfileController: UIViewController {
     
     //MARK: Lifecycle
     
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         configureBarButton()
         fatchUser()
+        configureNotificationObserver()
     }
     
     //MARK: Selectors
@@ -84,12 +102,20 @@ class EditProfileController: UIViewController {
     }
     
     @objc func handleSave() {
-        dismiss(animated: true, completion: nil)
+        UserService.saveUserData(user: user) { error in
+            self.dismiss(animated: true, completion: nil)
+            self.updateDelegate?.controller(self, wantsToUpdate: self.user)
+        }
     }
     
     @objc func handleProfileImageChange() {
-        print(123)
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
     }
+    
+    //MARK: Selectors
     
     @objc func handleLogout() {
         let aleat = UIAlertController(title: nil, message: "ログアウトしてよろしいですか？", preferredStyle: .actionSheet)
@@ -103,6 +129,22 @@ class EditProfileController: UIViewController {
         aleat.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         
         present(aleat, animated: true, completion: nil)
+    }
+    
+    @objc func keybordWillShow() {
+        if view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 150
+        }
+    }
+    
+    @objc func keybordWillHide() {
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+        
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     //MARK: API
@@ -127,36 +169,47 @@ class EditProfileController: UIViewController {
         profileImageView.layer.cornerRadius = 150 / 2
         
         let stack = UIStackView(arrangedSubviews: [fullnameTextField, usernameTextField,
-                                                   ageTextField, genderTextField, sickTextField,
-                                                   bioTextField, logoutButton])
+                                                   sickTextField, bioTextView, logoutButton])
         stack.axis = .vertical
-        stack.spacing = 16
+        stack.spacing = 10
         
         view.addSubview(stack)
         stack.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor,
                      right: view.rightAnchor,
-                     paddingTop: 50, paddingLeft: 30, paddingRight: 30)
+                     paddingTop: 10, paddingLeft: 30, paddingRight: 30)
     }
     
     func configureBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(handleDissmissal))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
-        navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+    
+    func configureNotificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keybordWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keybordWillHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     func configure() {
-        guard let user = user else { return }
-        
         fullnameTextField.text = user.fullname
         usernameTextField.text = user.username
-        genderTextField.text = user.gender
-        ageTextField.text = user.age
         sickTextField.text = user.sick
-        bioTextField.text = user.bio
+        bioTextView.text = user.bio
         
         guard let url = URL(string: user.profileImageUrl) else { return }
         profileImageView.sd_setImage(with: url)
     }
 }
 
+//MARK: UINavigationControllerDelegate
+
+extension EditProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else { return }
+        self.selectedImage = image
+        
+        dismiss(animated: true, completion: nil)
+    }
+}

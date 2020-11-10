@@ -37,22 +37,6 @@ class UserCell: UITableViewCell {
         return label
     }()
     
-    private let genderLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .darkGray
-        label.text = "男性"
-        return label
-    }()
-    
-    private let ageLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = .darkGray
-        label.text = "24歳"
-        return label
-    }()
-    
     private let sickLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
@@ -87,17 +71,14 @@ class UserCell: UITableViewCell {
         nameStack.anchor(top: topAnchor, left: profileImageView.rightAnchor,
                      paddingTop: 5, paddingLeft: 10)
         
-        let detailsStack = UIStackView(arrangedSubviews: [ageLabel, genderLabel, sickLabel])
-        detailsStack.axis = .horizontal
-        detailsStack.spacing = 5
-        addSubview(detailsStack)
-        detailsStack.anchor(top: nameStack.bottomAnchor, left: profileImageView.rightAnchor,
+        addSubview(sickLabel)
+        sickLabel.anchor(top: nameStack.bottomAnchor, left: profileImageView.rightAnchor,
                      paddingTop: 5, paddingLeft: 10)
         
         addSubview(bioLabel)
-        bioLabel.anchor(top: detailsStack.bottomAnchor,
-                                left: profileImageView.rightAnchor, right: rightAnchor,
-                                paddingTop: 5, paddingLeft: 10, paddingRight: 10)
+        bioLabel.anchor(top: sickLabel.bottomAnchor,
+                        left: profileImageView.rightAnchor, right: rightAnchor,
+                        paddingTop: 5, paddingLeft: 10, paddingRight: 10)
     }
     
     required init?(coder: NSCoder) {
@@ -112,8 +93,6 @@ class UserCell: UITableViewCell {
         guard let user = user else { return }
         fullnameLabel.text = user.fullname
         usernameLabel.text = "@" + user.username
-        genderLabel.text = user.gender
-        ageLabel.text = user.age
         sickLabel.text = user.sick
         bioLabel.text = user.bio
         

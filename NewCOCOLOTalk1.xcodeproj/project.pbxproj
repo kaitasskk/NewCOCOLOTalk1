@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2355F658255AAB5E008EF78D /* LargeCustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F657255AAB5E008EF78D /* LargeCustomTextView.swift */; };
 		235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA402254ED5CC001113DD /* AppDelegate.swift */; };
 		235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA404254ED5CC001113DD /* SceneDelegate.swift */; };
 		235CA40A254ED5CC001113DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235CA408254ED5CC001113DD /* Main.storyboard */; };
@@ -23,7 +24,6 @@
 		235CA487254EDD2B001113DD /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA486254EDD2B001113DD /* RegistrationController.swift */; };
 		235CA491254EDD6A001113DD /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA490254EDD6A001113DD /* NewMessageController.swift */; };
 		235CA496254EDD97001113DD /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA495254EDD97001113DD /* ConversationController.swift */; };
-		235CA4A0254EDDD4001113DD /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA49F254EDDD4001113DD /* SearchController.swift */; };
 		235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4A4254EDDF8001113DD /* AuthService.swift */; };
 		235CA4AA254EDE12001113DD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4A9254EDE12001113DD /* UserService.swift */; };
 		235CA4AF254EDE35001113DD /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA4AE254EDE35001113DD /* Template.swift */; };
@@ -67,6 +67,7 @@
 /* Begin PBXFileReference section */
 		01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0491306C56174C0A5EA762F5 /* Pods-NewCOCOLOTalk1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1.debug.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1.debug.xcconfig"; sourceTree = "<group>"; };
+		2355F657255AAB5E008EF78D /* LargeCustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCustomTextView.swift; sourceTree = "<group>"; };
 		235CA3FF254ED5CC001113DD /* NewCOCOLOTalk1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewCOCOLOTalk1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235CA402254ED5CC001113DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235CA404254ED5CC001113DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		235CA486254EDD2B001113DD /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		235CA490254EDD6A001113DD /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		235CA495254EDD97001113DD /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
-		235CA49F254EDDD4001113DD /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		235CA4A4254EDDF8001113DD /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		235CA4A9254EDE12001113DD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		235CA4AE254EDE35001113DD /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
@@ -222,9 +222,10 @@
 			isa = PBXGroup;
 			children = (
 				235CA4AE254EDE35001113DD /* Template.swift */,
-				235CA4B3254EDE46001113DD /* CustomTextField.swift */,
 				235CA4B8254EDE69001113DD /* TemplateButton.swift */,
 				235CA4EF254F5495001113DD /* Constants.swift */,
+				235CA4B3254EDE46001113DD /* CustomTextField.swift */,
+				2355F657255AAB5E008EF78D /* LargeCustomTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 				235CA469254EDC6A001113DD /* Authentication */,
 				235CA495254EDD97001113DD /* ConversationController.swift */,
 				235CA490254EDD6A001113DD /* NewMessageController.swift */,
-				235CA49F254EDDD4001113DD /* SearchController.swift */,
 				235CA4C8254F12AB001113DD /* ChatController.swift */,
 				235CA53A2557B0DB001113DD /* EditProfileController.swift */,
 			);
@@ -563,8 +563,8 @@
 				235CA473254EDCA0001113DD /* UserCell.swift in Sources */,
 				235CA47D254EDCE7001113DD /* RegistrationViewModel.swift in Sources */,
 				235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */,
+				2355F658255AAB5E008EF78D /* LargeCustomTextView.swift in Sources */,
 				235CA4C9254F12AB001113DD /* ChatController.swift in Sources */,
-				235CA4A0254EDDD4001113DD /* SearchController.swift in Sources */,
 				235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */,
 				235CA4B9254EDE69001113DD /* TemplateButton.swift in Sources */,
 				235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */,

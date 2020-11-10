@@ -22,14 +22,14 @@ class ConversationController: UIViewController {
     
     private lazy var headerView = ProfileHeader(frame: .init(x: 0, y: 0,
                                                              width: view.frame.width, height: 200))
-    
+    private var conversationDictionary = [String: Conversation]()
     private var users = [User]()
-    private var convarsations = [Conversation]()
+    private var conversations = [Conversation]()
     private var filteredConversations = [Conversation]()
-    private let searchController = UISearchController(searchResultsController: nil)
+    private let SearchController = UISearchController(searchResultsController: nil)
     
     private var inSearchMode: Bool {
-        return searchController.isActive && !searchController.searchBar.text!.isEmpty
+        return SearchController.isActive && !SearchController.searchBar.text!.isEmpty
     }
     
     private let newMessageButton: UIButton = {
@@ -39,16 +39,6 @@ class ConversationController: UIViewController {
         button.tintColor = .white
         button.imageView?.setDimensions(width: 25, height: 25)
         button.addTarget(self, action: #selector(showNewMessage), for: .touchUpInside)
-        return button
-    }()
-    
-    private let searchButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "lightbulb.fill"), for: .normal)
-        button.backgroundColor = .systemPink
-        button.tintColor = .white
-        button.imageView?.setDimensions(width: 25, height: 25)
-        button.addTarget(self, action: #selector(showSearch), for: .touchUpInside)
         return button
     }()
     
@@ -67,8 +57,9 @@ class ConversationController: UIViewController {
     //MARK: Selector
     
     @objc func showProfile() {
-        let controller = EditProfileController()
+        let controller = EditProfileController(user: user!)
         controller.delegate = self
+        controller.updateDelegate = self
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -77,13 +68,6 @@ class ConversationController: UIViewController {
     @objc func showNewMessage() {
         let controller = NewMessageController()
         controller.delegate = self
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
-    }
-    
-    @objc func showSearch() {
-        let controller = SearchController()
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -115,8 +99,12 @@ class ConversationController: UIViewController {
     }
     
     func fatchConversations() {
-        UserService.fatchConversation { convarsations in
-            self.convarsations = convarsations
+        UserService.fatchConversation { conversations in
+            conversations.forEach { conversation in
+                let message = conversation.message
+                self.conversationDictionary[message.chatPartnerId] = conversation
+            }
+            self.conversations = Array(self.conversationDictionary.values)
             self.tableView.reloadData()
         }
     }
@@ -141,18 +129,12 @@ class ConversationController: UIViewController {
         configureNavigationBar(withTitle: "トーク")
         navigationController?.navigationBar.barStyle = .black
         
-        let stack = UIStackView(arrangedSubviews: [newMessageButton, searchButton])
-        stack.axis = .horizontal
-        stack.spacing = 15
-        
         newMessageButton.setDimensions(width: 55, height: 55)
         newMessageButton.layer.cornerRadius = 55 / 2
-        searchButton.setDimensions(width: 55, height: 55)
-        searchButton.layer.cornerRadius = 55 / 2
         
-        view.addSubview(stack)
-        stack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
-                     paddingBottom: 15, paddingRight: 25)
+        view.addSubview(newMessageButton)
+        newMessageButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
+                                paddingBottom: 15, paddingRight: 25)
     }
     
     func configureTableView() {
@@ -184,15 +166,15 @@ class ConversationController: UIViewController {
     }
     
     func confitureSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.showsCancelButton = false
-        navigationItem.searchController = searchController
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.placeholder = "トークを検索"
+        SearchController.searchResultsUpdater = self
+        SearchController.searchBar.showsCancelButton = false
+        navigationItem.searchController = SearchController
+        SearchController.obscuresBackgroundDuringPresentation = false
+        SearchController.hidesNavigationBarDuringPresentation = false
+        SearchController.searchBar.placeholder = "トークを検索"
         definesPresentationContext = false
         
-        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+        if let textField = SearchController.searchBar.value(forKey: "searchField") as? UITextField {
             textField.textColor = .black
             textField.backgroundColor = .white
         }
@@ -201,12 +183,12 @@ class ConversationController: UIViewController {
 
 extension ConversationController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inSearchMode ? filteredConversations.count : convarsations.count
+        return inSearchMode ? filteredConversations.count : conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuserIdentifier, for: indexPath) as! ConversationCell
-        cell.conversation = inSearchMode ? filteredConversations[indexPath.row] : convarsations[indexPath.row]
+        cell.conversation = inSearchMode ? filteredConversations[indexPath.row] : conversations[indexPath.row]
         return cell
     }
 }
@@ -214,7 +196,7 @@ extension ConversationController: UITableViewDataSource {
 extension ConversationController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = inSearchMode
-            ? filteredConversations[indexPath.row].user : convarsations[indexPath.row].user
+            ? filteredConversations[indexPath.row].user : conversations[indexPath.row].user
         showChatController(forUser: user)
     }
 }
@@ -229,10 +211,10 @@ extension ConversationController: NewMessageControllerDelegate {
 }
 
 extension ConversationController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+    func updateSearchResults(for SearchController: UISearchController) {
+        guard let searchText = SearchController.searchBar.text?.lowercased() else { return }
         
-        filteredConversations = convarsations.filter({ convarsation -> Bool in
+        filteredConversations = conversations.filter({ convarsation -> Bool in
             return convarsation.user.fullname.contains(searchText)
                 || convarsation.user.username.contains(searchText)
         })
@@ -260,3 +242,12 @@ extension ConversationController: AuthenticationDelegate {
     }
 }
 
+//MARK: EditProfileControllerUpdateDelegate
+
+extension ConversationController: EditProfileControllerUpdateDelegate {
+    func controller(_ controller: EditProfileController, wantsToUpdate user: User) {
+        controller.dismiss(animated: true, completion: nil)
+        self.user = user
+        self.tableView.reloadData()
+    }
+}
