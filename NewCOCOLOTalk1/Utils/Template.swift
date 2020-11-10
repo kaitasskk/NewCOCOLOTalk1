@@ -127,6 +127,7 @@ extension UIViewController {
         navigationItem.title = title
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barStyle = .black
     }
 }
 

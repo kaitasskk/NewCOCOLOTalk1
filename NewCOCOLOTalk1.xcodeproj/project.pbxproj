@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2355F658255AAB5E008EF78D /* LargeCustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F657255AAB5E008EF78D /* LargeCustomTextView.swift */; };
+		2355F778255B1283008EF78D /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F777255B1283008EF78D /* EditProfileController.swift */; };
+		2355F791255B1809008EF78D /* EditProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F790255B1809008EF78D /* EditProfileHeader.swift */; };
+		2355F796255B1E49008EF78D /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F795255B1E49008EF78D /* EditProfileViewModel.swift */; };
+		2355F79F255B1F1F008EF78D /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F79E255B1F1F008EF78D /* EditProfileCell.swift */; };
+		2355F7A4255B2248008EF78D /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F7A3255B2248008EF78D /* InputTextView.swift */; };
+		2355F7C4255B35E9008EF78D /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F7C3255B35E9008EF78D /* MessageService.swift */; };
 		235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA402254ED5CC001113DD /* AppDelegate.swift */; };
 		235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA404254ED5CC001113DD /* SceneDelegate.swift */; };
 		235CA40A254ED5CC001113DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235CA408254ED5CC001113DD /* Main.storyboard */; };
@@ -40,7 +46,6 @@
 		235CA51B25542B28001113DD /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA51A25542B28001113DD /* Notification.swift */; };
 		235CA52025542D3F001113DD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA51F25542D3F001113DD /* NotificationService.swift */; };
 		235CA52525543176001113DD /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA52425543176001113DD /* NotificationCell.swift */; };
-		235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA53A2557B0DB001113DD /* EditProfileController.swift */; };
 		235CA5512557FF7C001113DD /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA5502557FF7C001113DD /* ProfileHeader.swift */; };
 		28D84E1CD77740633BEB243D /* Pods_NewCOCOLOTalk1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */; };
 		73AEBDFA44EB93F62CDD5EC9 /* Pods_NewCOCOLOTalk1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */; };
@@ -68,6 +73,12 @@
 		01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0491306C56174C0A5EA762F5 /* Pods-NewCOCOLOTalk1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1.debug.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1.debug.xcconfig"; sourceTree = "<group>"; };
 		2355F657255AAB5E008EF78D /* LargeCustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCustomTextView.swift; sourceTree = "<group>"; };
+		2355F777255B1283008EF78D /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		2355F790255B1809008EF78D /* EditProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProfileHeader.swift; path = "../New Group/EditProfileHeader.swift"; sourceTree = "<group>"; };
+		2355F795255B1E49008EF78D /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		2355F79E255B1F1F008EF78D /* EditProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
+		2355F7A3255B2248008EF78D /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		2355F7C3255B35E9008EF78D /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		235CA3FF254ED5CC001113DD /* NewCOCOLOTalk1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewCOCOLOTalk1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235CA402254ED5CC001113DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235CA404254ED5CC001113DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +117,6 @@
 		235CA51A25542B28001113DD /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		235CA51F25542D3F001113DD /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		235CA52425543176001113DD /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
-		235CA53A2557B0DB001113DD /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		235CA5502557FF7C001113DD /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1Tests.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1Tests/Pods-NewCOCOLOTalk1Tests.release.xcconfig"; sourceTree = "<group>"; };
 		53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +166,16 @@
 				3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2355F79A255B1EE0008EF78D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				235CA5502557FF7C001113DD /* ProfileHeader.swift */,
+				2355F790255B1809008EF78D /* EditProfileHeader.swift */,
+				2355F79E255B1F1F008EF78D /* EditProfileCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		235CA3F6254ED5CC001113DD = {
@@ -235,6 +255,7 @@
 			children = (
 				235CA4A4254EDDF8001113DD /* AuthService.swift */,
 				235CA4A9254EDE12001113DD /* UserService.swift */,
+				2355F7C3255B35E9008EF78D /* MessageService.swift */,
 				235CA51F25542D3F001113DD /* NotificationService.swift */,
 			);
 			path = API;
@@ -247,7 +268,7 @@
 				235CA495254EDD97001113DD /* ConversationController.swift */,
 				235CA490254EDD6A001113DD /* NewMessageController.swift */,
 				235CA4C8254F12AB001113DD /* ChatController.swift */,
-				235CA53A2557B0DB001113DD /* EditProfileController.swift */,
+				2355F777255B1283008EF78D /* EditProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,6 +279,7 @@
 				235CA4F425502F7F001113DD /* Authentication */,
 				235CA4EA254F47A6001113DD /* MessageViewModel.swift */,
 				235CA4F82552F505001113DD /* ConversationViewModel.swift */,
+				2355F795255B1E49008EF78D /* EditProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -265,7 +287,8 @@
 		235CA464254EDC2F001113DD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				235CA56125584347001113DD /* Profile */,
+				2355F79A255B1EE0008EF78D /* Profile */,
+				2355F7A3255B2248008EF78D /* InputTextView.swift */,
 				235CA472254EDCA0001113DD /* UserCell.swift */,
 				235CA4CD254F13BC001113DD /* ConversationCell.swift */,
 				235CA4D2254F1A97001113DD /* CustomInputAccessoryView.swift */,
@@ -301,14 +324,6 @@
 				235CA47C254EDCE7001113DD /* RegistrationViewModel.swift */,
 			);
 			path = Authentication;
-			sourceTree = "<group>";
-		};
-		235CA56125584347001113DD /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				235CA5502557FF7C001113DD /* ProfileHeader.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		9797BE630A01EBCF85D751BC /* Frameworks */ = {
@@ -562,17 +577,20 @@
 			files = (
 				235CA473254EDCA0001113DD /* UserCell.swift in Sources */,
 				235CA47D254EDCE7001113DD /* RegistrationViewModel.swift in Sources */,
+				2355F791255B1809008EF78D /* EditProfileHeader.swift in Sources */,
 				235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */,
 				2355F658255AAB5E008EF78D /* LargeCustomTextView.swift in Sources */,
 				235CA4C9254F12AB001113DD /* ChatController.swift in Sources */,
 				235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */,
+				2355F79F255B1F1F008EF78D /* EditProfileCell.swift in Sources */,
 				235CA4B9254EDE69001113DD /* TemplateButton.swift in Sources */,
-				235CA53B2557B0DB001113DD /* EditProfileController.swift in Sources */,
+				2355F7A4255B2248008EF78D /* InputTextView.swift in Sources */,
 				235CA5512557FF7C001113DD /* ProfileHeader.swift in Sources */,
 				235CA4F0254F5495001113DD /* Constants.swift in Sources */,
 				235CA4AF254EDE35001113DD /* Template.swift in Sources */,
 				235CA491254EDD6A001113DD /* NewMessageController.swift in Sources */,
 				235CA4DE254F3FA8001113DD /* ChatCell.swift in Sources */,
+				2355F796255B1E49008EF78D /* EditProfileViewModel.swift in Sources */,
 				235CA4D3254F1A97001113DD /* CustomInputAccessoryView.swift in Sources */,
 				235CA478254EDCC8001113DD /* LoginViewModel.swift in Sources */,
 				235CA4EB254F47A6001113DD /* MessageViewModel.swift in Sources */,
@@ -580,11 +598,13 @@
 				235CA4F92552F505001113DD /* ConversationViewModel.swift in Sources */,
 				235CA4B4254EDE46001113DD /* CustomTextField.swift in Sources */,
 				235CA496254EDD97001113DD /* ConversationController.swift in Sources */,
+				2355F7C4255B35E9008EF78D /* MessageService.swift in Sources */,
 				235CA46E254EDC87001113DD /* User.swift in Sources */,
 				235CA4AA254EDE12001113DD /* UserService.swift in Sources */,
 				235CA487254EDD2B001113DD /* RegistrationController.swift in Sources */,
 				235CA51B25542B28001113DD /* Notification.swift in Sources */,
 				235CA52025542D3F001113DD /* NotificationService.swift in Sources */,
+				2355F778255B1283008EF78D /* EditProfileController.swift in Sources */,
 				235CA482254EDD07001113DD /* LoginController.swift in Sources */,
 				235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */,
 				235CA52525543176001113DD /* NotificationCell.swift in Sources */,

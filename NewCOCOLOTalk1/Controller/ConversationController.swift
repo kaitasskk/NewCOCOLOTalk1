@@ -59,7 +59,6 @@ class ConversationController: UIViewController {
     @objc func showProfile() {
         let controller = EditProfileController(user: user!)
         controller.delegate = self
-        controller.updateDelegate = self
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -99,7 +98,7 @@ class ConversationController: UIViewController {
     }
     
     func fatchConversations() {
-        UserService.fatchConversation { conversations in
+        MessageService.fatchConversation { conversations in
             conversations.forEach { conversation in
                 let message = conversation.message
                 self.conversationDictionary[message.chatPartnerId] = conversation
@@ -225,12 +224,6 @@ extension ConversationController: UISearchResultsUpdating {
 
 //MARK: EditProfileControllerDelegate
 
-extension ConversationController: EditProfileControllerDelegate {
-    func handleLogout() {
-        logUserout()
-    }
-}
-
 extension ConversationController: AuthenticationDelegate {
     func authenticationComplete() {
         dismiss(animated: true, completion: nil)
@@ -242,9 +235,9 @@ extension ConversationController: AuthenticationDelegate {
     }
 }
 
-//MARK: EditProfileControllerUpdateDelegate
+//MARK: EditProfileControllerDelegate
 
-extension ConversationController: EditProfileControllerUpdateDelegate {
+extension ConversationController: EditProfileControllerDelegate {
     func controller(_ controller: EditProfileController, wantsToUpdate user: User) {
         controller.dismiss(animated: true, completion: nil)
         self.user = user

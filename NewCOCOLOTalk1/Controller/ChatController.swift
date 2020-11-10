@@ -57,7 +57,7 @@ class ChatController: UICollectionViewController {
     //MARK: API
     
     func fatchMessage() {
-        UserService.fatchMessages(forUser: user) { messages in
+        MessageService.fatchMessages(forUser: user) { messages in
             self.messages = messages
             self.collectionView.reloadData()
             self.collectionView.scrollToItem(at: [0, self.messages.count - 1], at: .bottom, animated: true)
@@ -120,7 +120,7 @@ extension ChatController: UICollectionViewDelegateFlowLayout {
 extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String) {
         
-        UserService.uploadMessage(message, to: user) { error in
+        MessageService.uploadMessage(message, to: user) { error in
             if let error = error {
                 print(error.localizedDescription)
                 return

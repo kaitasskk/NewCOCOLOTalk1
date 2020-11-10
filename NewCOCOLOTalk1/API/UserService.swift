@@ -28,57 +28,21 @@ struct UserService {
         }
     }
     
-    static func fatchConversation(completion: @escaping([Conversation]) -> Void ) {
-        var conversations = [Conversation]()
+    static func updateProfileaImage(image: UIImage, completion: @escaping(String) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        let filename = NSUUID().uuidString
+        let ref = Storage.storage().reference(withPath: "/profile_image/\(filename)")
         
-        let query = COLLECTION_MESSAGES.document(uid).collection("recent-messages").order(by: "timestamp")
-        
-        query.addSnapshotListener { (snapshot, error) in
-            snapshot?.documentChanges.forEach({ change in
-                let dictionary = change.document.data()
-                let message = Message(dictionary: dictionary)
+        ref.putData(imageData, metadata: nil) { (meta, error) in
+            ref.downloadURL { (url, error) in
+                guard let profileaImageUrl = url?.absoluteString else { return }
+                let data = ["profileImageUrl": profileaImageUrl]
                 
-                self.fatchUser(withUid: message.chatPartnerId) { user in
-                    let conversation = Conversation(user: user, message: message)
-                    conversations.append(conversation)
-                    completion(conversations)
+                COLLECTION_USERS.document(uid).updateData(data) { error in
+                    completion(profileaImageUrl)
                 }
-            })
-        }
-    }
-    
-    static func fatchMessages(forUser user: User, completion: @escaping([Message]) -> Void) {
-        var messages = [Message]()
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-
-        let query = COLLECTION_MESSAGES.document(currentUid).collection(user.uid).order(by: "timestamp")
-        
-        query.addSnapshotListener { (snapshot, error) in
-            snapshot?.documentChanges.forEach({ change in
-                if change.type == .added  {
-                    let dictionary = change.document.data()
-                    messages.append(Message(dictionary: dictionary))
-                    completion(messages)
-                }
-            })
-        }
-    }
-    
-    static func uploadMessage(_ message: String, to user: User, completion: ((Error?) -> Void)?) {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        
-        let data = ["text": message,
-                    "fromId": currentUid,
-                    "toId": user.uid,
-                    "timestamp": Timestamp(date: Date())] as [String: Any]
-        
-        COLLECTION_MESSAGES.document(currentUid).collection(user.uid).addDocument(data: data) { _ in
-            COLLECTION_MESSAGES.document(user.uid).collection(currentUid).addDocument(data: data, completion: completion)
-            
-            COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(user.uid).setData(data)
-            
-            COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data)
+            }
         }
     }
     

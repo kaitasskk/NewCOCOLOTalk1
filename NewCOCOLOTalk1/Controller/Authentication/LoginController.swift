@@ -145,8 +145,6 @@ class LoginController: UIViewController {
         showRegistrationButton.anchor(left: view.leftAnchor,
                                       bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                       right: view.rightAnchor, paddingLeft: 30, paddingRight: 30)
-        
-        
     }
     
     func configureNotificationObserver() {

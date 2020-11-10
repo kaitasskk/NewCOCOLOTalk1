@@ -2,38 +2,36 @@
 //  EditProfileController.swift
 //  NewCOCOLOTalk1
 //
-//  Created by 志村　啓太 on 2020/11/08.
+//  Created by 志村　啓太 on 2020/11/11.
 //
 
 import UIKit
-import Firebase
-import SDWebImage
 
 private let reuseIdentifier = "EditProfileCell"
 
-protocol EditProfileControllerDelegate: class{
-    func handleLogout()
-}
-
-protocol EditProfileControllerUpdateDelegate: class {
+protocol EditProfileControllerDelegate: class {
     func controller(_ controller: EditProfileController, wantsToUpdate user: User)
 }
 
-class EditProfileController: UIViewController {
+class EditProfileController: UITableViewController {
     
     //MARK: Properties
     
-    private var user: User {
-        didSet { configure() }
-    }
+    private var user: User
     
-    private var viewModel = RegistrationViewModel()
+    private lazy var headerView = EditProfileHeader(user: user)
+    private let imagePicker = UIImagePickerController()
+    
     private var selectedImage: UIImage? {
-        didSet { profileImageView.image = selectedImage }
+        didSet { headerView.profileImageView.image = selectedImage }
     }
     
+    private var imageChanged: Bool {
+        return selectedImage != nil
+    }
+    
+    private var userInfoChanged = false
     weak var delegate: EditProfileControllerDelegate?
-    weak var updateDelegate: EditProfileControllerUpdateDelegate?
     
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -48,39 +46,12 @@ class EditProfileController: UIViewController {
         return button
     }()
     
-    private lazy var profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .lightGray
-        iv.contentMode = .scaleAspectFill
-        iv.layer.borderColor = UIColor.white.cgColor
-        iv.layer.borderWidth = 4
-        iv.clipsToBounds = true
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageChange))
-        iv.addGestureRecognizer(tap)
-        iv.isUserInteractionEnabled = true
-        
-        return iv
-    }()
-    
-    private let fullnameTextField: UITextField = CustomTextField(placeholder: "名前")
-    private let usernameTextField: UITextField = CustomTextField(placeholder: "ユーザーネーム")
-    private let sickTextField: UITextField = CustomTextField(placeholder: "病名(社交不安障害)")
-    private let bioTextView: UITextView = LargeCustomTextView()
-    
-    private let logoutButton: TemplateButton = {
-        let button = TemplateButton(title: "ログアウト", type: .system)
-        button.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
-        button.backgroundColor = .lightGray
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
     
     //MARK: Lifecycle
     
     init(user: User) {
         self.user = user
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .plain)
     }
     
     required init?(coder: NSCoder) {
@@ -89,10 +60,9 @@ class EditProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        configureBarButton()
-        fatchUser()
-        configureNotificationObserver()
+        configureNavigationBar()
+        configureTableView()
+        configureImagePicker()
     }
     
     //MARK: Selectors
@@ -102,114 +72,132 @@ class EditProfileController: UIViewController {
     }
     
     @objc func handleSave() {
-        UserService.saveUserData(user: user) { error in
-            self.dismiss(animated: true, completion: nil)
-            self.updateDelegate?.controller(self, wantsToUpdate: self.user)
-        }
-    }
-    
-    @objc func handleProfileImageChange() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-    }
-    
-    //MARK: Selectors
-    
-    @objc func handleLogout() {
-        let aleat = UIAlertController(title: nil, message: "ログアウトしてよろしいですか？", preferredStyle: .actionSheet)
-        
-        aleat.addAction((UIAlertAction(title: "ログアウト", style: .destructive, handler: { _ in
-            self.dismiss(animated: true) {
-                self.delegate?.handleLogout()
-            }
-        })))
-        
-        aleat.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
-        
-        present(aleat, animated: true, completion: nil)
-    }
-    
-    @objc func keybordWillShow() {
-        if view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= 150
-        }
-    }
-    
-    @objc func keybordWillHide() {
-        if view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-        
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
+        self.showLoader(true)
+        self.showLoader(false)
+        updateUserData()
     }
     
     //MARK: API
     
-    func fatchUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        UserService.fatchUser(withUid: uid) { user in
-            self.user = user
+    func updateUserData() {
+        if imageChanged && !userInfoChanged {
+            updateProfileImage()
+        } else if userInfoChanged && !imageChanged {
+            UserService.saveUserData(user: user) { error in
+                self.delegate?.controller(self, wantsToUpdate: self.user)
+            }
+        } else if userInfoChanged && imageChanged {
+            UserService.saveUserData(user: user) { error in
+                self.updateProfileImage()
+            }
+        } else {
+            self.showError("プロフィールが編集されていません。")
+        }
+    }
+    
+    func updateProfileImage() {
+        guard let image = selectedImage else { return }
+        
+        UserService.updateProfileaImage(image: image) { profileImageUrl in
+            self.user.profileImageUrl = profileImageUrl
+            self.delegate?.controller(self, wantsToUpdate: self.user)
         }
     }
     
     //MARK: Helpers
     
-    func configureUI() {
+    func configureNavigationBar() {
         configureNavigationBar(withTitle: "プロフィール編集")
-        
-        view.backgroundColor = .systemPink
-        
-        view.addSubview(profileImageView)
-        profileImageView.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor, paddingTop: 10)
-        profileImageView.setDimensions(width: 150, height: 150)
-        profileImageView.layer.cornerRadius = 150 / 2
-        
-        let stack = UIStackView(arrangedSubviews: [fullnameTextField, usernameTextField,
-                                                   sickTextField, bioTextView, logoutButton])
-        stack.axis = .vertical
-        stack.spacing = 10
-        
-        view.addSubview(stack)
-        stack.anchor(top: profileImageView.bottomAnchor, left: view.leftAnchor,
-                     right: view.rightAnchor,
-                     paddingTop: 10, paddingLeft: 30, paddingRight: 30)
-    }
-    
-    func configureBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(handleDissmissal))
+        navigationController?.navigationBar.tintColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
     }
     
-    func configureNotificationObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keybordWillShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keybordWillHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tapGesture)
+    func configureTableView() {
+        tableView.tableHeaderView = headerView
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 230)
+        headerView.delegate = self
+        tableView.tableFooterView = UIView()
+        
+        tableView.register(EditProfileCell.self, forCellReuseIdentifier: reuseIdentifier)
+        
     }
     
-    func configure() {
-        fullnameTextField.text = user.fullname
-        usernameTextField.text = user.username
-        sickTextField.text = user.sick
-        bioTextView.text = user.bio
-        
-        guard let url = URL(string: user.profileImageUrl) else { return }
-        profileImageView.sd_setImage(with: url)
+    func configureImagePicker() {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
     }
 }
 
-//MARK: UINavigationControllerDelegate
+//MARK: UITableViewDataSource
+
+extension EditProfileController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return EditProfileOptions.allCases.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! EditProfileCell
+        
+        cell.delegate = self
+        
+        guard let option = EditProfileOptions(rawValue: indexPath.row) else { return cell }
+        cell.viewModel = EditProfileViewModel(user: user, option: option)
+        cell.contentView.isUserInteractionEnabled = false
+        return cell
+    }
+}
+
+//MARK: UITableViewDelegate
+
+extension EditProfileController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let option = EditProfileOptions(rawValue: indexPath.row) else { return 0}
+        
+        return option == .bio ? 200 : 50
+    }
+}
+
+//MARK: EditProfileHeaderDelegate
+
+extension EditProfileController: EditProfileHeaderDelegate {
+    func didTapChangePhoto() {
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+//MARK: UIImagePickerControllerDelegate
 
 extension EditProfileController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
-        self.selectedImage = image
         
+        guard let image = info[.editedImage] as? UIImage else { return }
+        self.selectedImage = image
         dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: EditProfileCellDelegate
+
+extension EditProfileController: EditProfileCellDelegate {
+    func updateUserInfo(_ cell: EditProfileCell) {
+        guard let viewModel = cell.viewModel else { return }
+        userInfoChanged = true
+        
+        switch viewModel.option {
+        case .fullname:
+            guard let fullname = cell.infoTextField.text else { return }
+            user.fullname = fullname
+        case .username:
+            guard let username = cell.infoTextField.text else { return }
+            user.username = username
+        case .sick:
+            guard let sick = cell.infoTextField.text else { return }
+            user.sick = sick
+        case .bio:
+            user.bio = cell.bioTextView.text
+        }
     }
 }
