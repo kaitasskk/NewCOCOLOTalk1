@@ -44,12 +44,6 @@ class RegistrationController: UIViewController {
         return button
     }()
     
-    private let testLoginButton: TemplateButton = {
-        let button = TemplateButton(title: "テストログイン", type: .system)
-        button.addTarget(self, action: #selector(handleTestLogin), for: .touchUpInside)
-        return button
-    }()
-    
     private let showLoginButton: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSAttributedString(string: "アカウントをお持ちの方はこちら", attributes: [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 20)])
@@ -77,7 +71,7 @@ class RegistrationController: UIViewController {
     
     @objc func handleRegistration() {
         guard let profileImage = profileImage else {
-            self.showError("No profile image selected.")
+            self.showError("プロフィール画像が選択されていません。")
             return }
         
         guard let email = emailTextField.text else { return }
@@ -92,17 +86,13 @@ class RegistrationController: UIViewController {
         AuthService.shared.SignIn(credentials: credentials) { error in
             if let error = error {
                 self.showLoader(false)
-                self.showError(error.localizedDescription)
+                self.showError("入力内容に誤りがあります。\nこれらの内容をお確かめ下さい。\n\nEメール： 既に使用されているか、形式に誤り。\nパスワード：6文字以上されていない。")
                 return
             }
             
             self.showLoader(false)
             self.delegate?.authenticationComplete()
         }
-    }
-    
-    @objc func handleTestLogin() {
-        dismiss(animated: true, completion: nil)
     }
     
     @objc func handleshowLoginButton() {
@@ -165,7 +155,7 @@ class RegistrationController: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField,
                                                    fullnameTextField, usernameTextField,
-                                                   signupButton, testLoginButton])
+                                                   signupButton])
         stack.axis = .vertical
         stack.spacing = 16
         

@@ -18,7 +18,7 @@ struct ConversationViewModel {
     var timestamp: String {
         let date = conversation.message.timestamp.dateValue()
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .short
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.doesRelativeDateFormatting = true

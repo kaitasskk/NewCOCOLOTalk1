@@ -64,6 +64,13 @@ class ConversationController: UIViewController {
         present(nav, animated: true, completion: nil)
     }
     
+    @objc func showDescription() {
+        let controller = DescriptionController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
+    }
+    
     @objc func showNewMessage() {
         let controller = NewMessageController()
         controller.delegate = self
@@ -157,6 +164,14 @@ class ConversationController: UIViewController {
         leftButton.addTarget(self, action: #selector(showProfile), for: .touchUpInside)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
+        
+        let rightButton = UIButton(type: .system)
+        rightButton.setImage(UIImage(systemName: "lightbulb.fill"), for: .normal)
+        rightButton.tintColor = .white
+        rightButton.addTarget(self, action: #selector(showDescription), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        
     }
 
     func showChatController(forUser user: User) {
@@ -215,7 +230,6 @@ extension ConversationController: UISearchResultsUpdating {
         
         filteredConversations = conversations.filter({ convarsation -> Bool in
             return convarsation.user.fullname.contains(searchText)
-                || convarsation.user.username.contains(searchText)
         })
         
         self.tableView.reloadData()
@@ -242,5 +256,9 @@ extension ConversationController: EditProfileControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
         self.user = user
         self.tableView.reloadData()
+    }
+    
+    func handleLogout() {
+        logUserout()
     }
 }

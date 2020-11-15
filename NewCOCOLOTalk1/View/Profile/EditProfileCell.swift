@@ -37,12 +37,13 @@ class EditProfileCell: UITableViewCell {
         return tv
     }()
     
-    let bioTextView: InputTextView = {
-        let tv = InputTextView()
+    let bioTextView: UITextView = {
+        let tv = UITextView()
         tv.font = UIFont.systemFont(ofSize: 15)
         tv.textColor = .systemPink
-        tv.placeholderLabel.text = "プロフィール文"
-        tv.placeholderLabel.textColor = .systemPink
+        tv.isScrollEnabled = false
+        tv.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        tv.text = ""
         return tv
     }()
     
@@ -87,8 +88,6 @@ class EditProfileCell: UITableViewCell {
         guard let viewModel = viewModel else { return }
         infoTextField.isHidden = viewModel.shouldHideTextField
         bioTextView.isHidden = viewModel.shouldHideTextView
-        
-        bioTextView.placeholderLabel.isHidden = viewModel.shouldHidePlaceholderLabel
         
         titleLabel.text = viewModel.titleText
         

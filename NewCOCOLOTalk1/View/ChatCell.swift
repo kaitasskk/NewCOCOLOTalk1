@@ -42,6 +42,14 @@ class ChatCell: UICollectionViewCell {
         return view
     }()
     
+    private let timestampLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = UIColor(white: 1, alpha: 0.8)
+        label.numberOfLines = 2
+        return label
+    }()
+    
     //MARK: Lifecycle
     
     override init(frame: CGRect) {
@@ -66,7 +74,10 @@ class ChatCell: UICollectionViewCell {
         
         bubbleContainer.addSubview(textView)
         textView.anchor(top: bubbleContainer.topAnchor, left: bubbleContainer.leftAnchor,
-                        bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 5, paddingRight: 10)
+                        bottom: bubbleContainer.bottomAnchor, right: bubbleContainer.rightAnchor, paddingTop: 5, paddingLeft: 60, paddingBottom: 30, paddingRight: 10)
+        
+        bubbleContainer.addSubview(timestampLabel)
+        timestampLabel.centerX(inView: bubbleContainer, topAnchor: textView.bottomAnchor, paddingTop: 5)
     }
     
     required init?(coder: NSCoder) {
@@ -84,6 +95,7 @@ class ChatCell: UICollectionViewCell {
         
         bubbleLeftAnchor.isActive = viewModel.leftAnchorActive
         bubbleRightAnchor.isActive = viewModel.rightAnchorActive
+        timestampLabel.text = viewModel.timestamp
         
         profileImageView.isHidden = viewModel.shouldHideProfileImage
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)

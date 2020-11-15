@@ -14,6 +14,7 @@
 		2355F79F255B1F1F008EF78D /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F79E255B1F1F008EF78D /* EditProfileCell.swift */; };
 		2355F7A4255B2248008EF78D /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F7A3255B2248008EF78D /* InputTextView.swift */; };
 		2355F7C4255B35E9008EF78D /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F7C3255B35E9008EF78D /* MessageService.swift */; };
+		2355F7CC255B4BB5008EF78D /* EditProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2355F7CB255B4BB5008EF78D /* EditProfileFooter.swift */; };
 		235CA403254ED5CC001113DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA402254ED5CC001113DD /* AppDelegate.swift */; };
 		235CA405254ED5CC001113DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA404254ED5CC001113DD /* SceneDelegate.swift */; };
 		235CA40A254ED5CC001113DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 235CA408254ED5CC001113DD /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		235CA52025542D3F001113DD /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA51F25542D3F001113DD /* NotificationService.swift */; };
 		235CA52525543176001113DD /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA52425543176001113DD /* NotificationCell.swift */; };
 		235CA5512557FF7C001113DD /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CA5502557FF7C001113DD /* ProfileHeader.swift */; };
+		235CAFF8255EC6FF00629F49 /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235CAFF7255EC6FF00629F49 /* DescriptionController.swift */; };
 		28D84E1CD77740633BEB243D /* Pods_NewCOCOLOTalk1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E00E948F359DB9475E3A9C /* Pods_NewCOCOLOTalk1.framework */; };
 		73AEBDFA44EB93F62CDD5EC9 /* Pods_NewCOCOLOTalk1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */; };
 		BC5C7775628B3CA6A4E495AB /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6121F4AE89C46F05C33B5 /* Pods_NewCOCOLOTalk1_NewCOCOLOTalk1UITests.framework */; };
@@ -79,6 +81,7 @@
 		2355F79E255B1F1F008EF78D /* EditProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
 		2355F7A3255B2248008EF78D /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		2355F7C3255B35E9008EF78D /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		2355F7CB255B4BB5008EF78D /* EditProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileFooter.swift; sourceTree = "<group>"; };
 		235CA3FF254ED5CC001113DD /* NewCOCOLOTalk1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewCOCOLOTalk1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235CA402254ED5CC001113DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		235CA404254ED5CC001113DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 		235CA51F25542D3F001113DD /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		235CA52425543176001113DD /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		235CA5502557FF7C001113DD /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		235CAFF7255EC6FF00629F49 /* DescriptionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
 		3003D5F0C4C240C2F4E4D677 /* Pods-NewCOCOLOTalk1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1Tests.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1Tests/Pods-NewCOCOLOTalk1Tests.release.xcconfig"; sourceTree = "<group>"; };
 		53DE396CF568D01B048E37ED /* Pods_NewCOCOLOTalk1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewCOCOLOTalk1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1135E39C61172D948BFB2F /* Pods-NewCOCOLOTalk1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewCOCOLOTalk1.release.xcconfig"; path = "Target Support Files/Pods-NewCOCOLOTalk1/Pods-NewCOCOLOTalk1.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				235CA5502557FF7C001113DD /* ProfileHeader.swift */,
 				2355F790255B1809008EF78D /* EditProfileHeader.swift */,
 				2355F79E255B1F1F008EF78D /* EditProfileCell.swift */,
+				2355F7CB255B4BB5008EF78D /* EditProfileFooter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			children = (
 				235CA481254EDD07001113DD /* LoginController.swift */,
 				235CA486254EDD2B001113DD /* RegistrationController.swift */,
+				235CAFF7255EC6FF00629F49 /* DescriptionController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				235CA4F0254F5495001113DD /* Constants.swift in Sources */,
 				235CA4AF254EDE35001113DD /* Template.swift in Sources */,
 				235CA491254EDD6A001113DD /* NewMessageController.swift in Sources */,
+				235CAFF8255EC6FF00629F49 /* DescriptionController.swift in Sources */,
 				235CA4DE254F3FA8001113DD /* ChatCell.swift in Sources */,
 				2355F796255B1E49008EF78D /* EditProfileViewModel.swift in Sources */,
 				235CA4D3254F1A97001113DD /* CustomInputAccessoryView.swift in Sources */,
@@ -609,6 +616,7 @@
 				235CA4A5254EDDF8001113DD /* AuthService.swift in Sources */,
 				235CA52525543176001113DD /* NotificationCell.swift in Sources */,
 				235CA4CE254F13BC001113DD /* ConversationCell.swift in Sources */,
+				2355F7CC255B4BB5008EF78D /* EditProfileFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

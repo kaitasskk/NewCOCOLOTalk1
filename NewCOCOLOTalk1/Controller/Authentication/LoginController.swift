@@ -43,12 +43,6 @@ class LoginController: UIViewController {
         return button
     }()
     
-    private let testLoginButton: TemplateButton = {
-        let button = TemplateButton(title: "テストログイン", type: .system)
-        button.addTarget(self, action: #selector(handleTestLogin), for: .touchUpInside)
-        return button
-    }()
-    
     private let showRegistrationButton: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSAttributedString(string: "新規登録はこちら", attributes: [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 20)])
@@ -76,17 +70,13 @@ class LoginController: UIViewController {
         AuthService.shared.logIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 self.showLoader(false)
-                self.showError(error.localizedDescription)
+                self.showError("Eメールもしくはパスワードに誤りがあります。")
                 return
             }
             
             self.showLoader(false)
             self.delegete?.authenticationComplete()
         }
-    }
-    
-    @objc func handleTestLogin() {
-        dismiss(animated: true, completion: nil)
     }
     
     @objc func handleShowRegistration() {
@@ -133,7 +123,7 @@ class LoginController: UIViewController {
         iconImageView.setDimensions(width: 200, height: 200)
         
         let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField,
-                                                   loginButton, testLoginButton])
+                                                   loginButton])
         stack.axis = .vertical
         stack.spacing = 16
         

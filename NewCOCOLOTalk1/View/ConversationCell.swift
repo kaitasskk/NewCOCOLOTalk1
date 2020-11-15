@@ -77,7 +77,6 @@ class ConversationCell: UITableViewCell {
         addSubview(timestampLabel)
         timestampLabel.anchor(top: topAnchor, right: rightAnchor,
                               paddingTop: 20, paddingRight: 10)
-        
     }
     
     required init?(coder: NSCoder) {

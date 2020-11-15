@@ -11,6 +11,7 @@ private let reuseIdentifier = "EditProfileCell"
 
 protocol EditProfileControllerDelegate: class {
     func controller(_ controller: EditProfileController, wantsToUpdate user: User)
+    func handleLogout()
 }
 
 class EditProfileController: UITableViewController {
@@ -20,6 +21,8 @@ class EditProfileController: UITableViewController {
     private var user: User
     
     private lazy var headerView = EditProfileHeader(user: user)
+    private let footerView = EditProfileFooter()
+    
     private let imagePicker = UIImagePickerController()
     
     private var selectedImage: UIImage? {
@@ -122,7 +125,9 @@ class EditProfileController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         tableView.register(EditProfileCell.self, forCellReuseIdentifier: reuseIdentifier)
-        
+        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
+        tableView.tableFooterView = footerView
+        footerView.delegate = self
     }
     
     func configureImagePicker() {
@@ -199,5 +204,21 @@ extension EditProfileController: EditProfileCellDelegate {
         case .bio:
             user.bio = cell.bioTextView.text
         }
+    }
+}
+
+extension EditProfileController: EditProfileFooterDelegate {
+    func handleLogout() {
+        let aleat = UIAlertController(title: nil, message: "ログアウトしてよろしいですか？", preferredStyle: .actionSheet)
+        
+        aleat.addAction((UIAlertAction(title: "ログアウト", style: .destructive, handler: { _ in
+            self.dismiss(animated: true) {
+                self.delegate?.handleLogout()
+            }
+        })))
+        
+        aleat.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        
+        present(aleat, animated: true, completion: nil)
     }
 }
